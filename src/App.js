@@ -1,10 +1,9 @@
-import { v4 as uuidv4 } from "uuid";
+
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+
 import Header from "./components/Header";
 import FeedbackList from "./components/FeedBackList";
-import FeedbackData from "./data/FeedbackData";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedBackForm from "./components/FeedBackForm";
 import AboutPage from "./pages/AboutPage";
@@ -32,18 +31,10 @@ const FunctionalComponent = () => {
 */
 
 function App() {
-  const [feedback, setFeedback] = useState(FeedbackData);
+ //const [feedback, setFeedback] = useState(FeedbackData);
 
-  const handleDelete = (id) => {
-    if (window.confirm("Are you sure?")) {
-      setFeedback(feedback.filter((item) => item.id !== id));
-    }
-  };
+ 
 
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidv4();
-    setFeedback([newFeedback, ...feedback]);
-  };
 
   return (
     <FeedbackProvider>
@@ -61,11 +52,9 @@ function App() {
             path="/"
             element={
               <>
-                <FeedBackForm handleAdd={addFeedback} />
-                <FeedbackStats />
-                <FeedbackList
-                  deleteFeedback={handleDelete}
-                />
+                <FeedBackForm />
+                <FeedbackStats  />
+                <FeedbackList/>
                 <AboutIconLink/>
               </>
             }

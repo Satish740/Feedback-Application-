@@ -5,9 +5,9 @@ import React from "react";
 import Feedbackitems from "./Feedbackitems";
 //import PropTypes from "prop-types";
 
-function FeedBackList({ deleteFeedback }) {
+function FeedBackList() {
 
-  const feedback=useContext(FeedbackContext)
+  const {feedback}=useContext(FeedbackContext)
 
   if (!feedback || feedback.length === 0) return <p>No Feedback Yet</p>;
 
@@ -25,7 +25,6 @@ function FeedBackList({ deleteFeedback }) {
             <Feedbackitems
               key={items.id}
               item={items}
-              handleDelete={deleteFeedback}
             />
           </motion.div>
         ))}
